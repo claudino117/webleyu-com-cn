@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://claudino117.github.io/webleyu-com-cn/sitemap.xml

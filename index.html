@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>乐鱼体育 · 轻动探索</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #f1f4f8;
+            color: #2d3a4a;
+            line-height: 1.6;
+            padding: 0 1.2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ---- 导航 ---- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0 0.8rem;
+            border-bottom: 1px solid #dce3ec;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            color: #1f2a3a;
+        }
+
+        .logo span {
+            color: #3478c5;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a {
+            color: #3b4b5e;
+            text-decoration: none;
+            padding: 0.3rem 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #1f2a3a;
+            border-bottom-color: #3478c5;
+        }
+
+        /* ---- hero 区 ---- */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            padding: 3rem 0 2.5rem;
+        }
+
+        .hero-text {
+            flex: 1 1 280px;
+        }
+
+        .hero-text h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.8rem;
+            color: #1b2633;
+        }
+
+        .hero-text p {
+            font-size: 1.05rem;
+            color: #445566;
+            margin-bottom: 1.2rem;
+            max-width: 520px;
+        }
+
+        .hero-highlight {
+            background: white;
+            padding: 0.8rem 1.2rem;
+            border-radius: 40px;
+            display: inline-block;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            border: 1px solid #e2e9f2;
+        }
+
+        .hero-highlight a {
+            color: #1f2a3a;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed #7c8ca0;
+        }
+
+        .hero-highlight a:hover {
+            border-bottom-color: #3478c5;
+        }
+
+        .hero-visual {
+            flex: 1 1 240px;
+            background: #dce6f2;
+            border-radius: 24px;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.8rem;
+            font-weight: 200;
+            color: #4f6a88;
+            letter-spacing: 0.1em;
+            border: 1px solid #cad6e6;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.02);
+        }
+
+        /* ---- 场景模块 (三卡片) ---- */
+        .scenes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.8rem;
+            padding: 2rem 0 2.8rem;
+        }
+
+        .scene-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.8rem 1.4rem 1.6rem;
+            border: 1px solid #e4eaf2;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.02);
+            transition: transform 0.15s, box-shadow 0.2s;
+        }
+
+        .scene-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+        }
+
+        .scene-icon {
+            font-size: 1.7rem;
+            margin-bottom: 0.6rem;
+            opacity: 0.7;
+        }
+
+        .scene-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1b2633;
+        }
+
+        .scene-card p {
+            font-size: 0.94rem;
+            color: #4b5b6e;
+            line-height: 1.55;
+        }
+
+        /* ---- 核心介绍 / 简述区 ---- */
+        .intro-wrap {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem 2.2rem;
+            margin: 0.5rem 0 2.2rem;
+            border: 1px solid #e4eaf2;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.015);
+        }
+
+        .intro-wrap h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1b2633;
+            margin-bottom: 1rem;
+        }
+
+        .intro-wrap p {
+            color: #3d5064;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+
+        .intro-wrap a {
+            color: #1f2a3a;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px solid #b7c6d9;
+        }
+
+        .intro-wrap a:hover {
+            border-bottom-color: #3478c5;
+        }
+
+        /* ---- 常见说明 (FAQ 摘要) ---- */
+        .faq-summary {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 2rem;
+            padding: 2rem 0 1.8rem;
+            border-top: 1px solid #dce3ec;
+        }
+
+        .faq-item {
+            flex: 1 1 200px;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #1b2633;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-item span {
+            font-size: 0.9rem;
+            color: #556b7e;
+        }
+
+        /* ---- 脚注 ---- */
+        footer {
+            padding: 1.5rem 0 2.5rem;
+            font-size: 0.85rem;
+            color: #5a6f83;
+            border-top: 1px solid #e0e7f0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 0.8rem;
+        }
+
+        footer a {
+            color: #3b4b5e;
+            text-decoration: none;
+            border-bottom: 1px solid #ced7e4;
+        }
+
+        footer a:hover {
+            border-bottom-color: #3478c5;
+        }
+
+        /* ---- 响应式 ---- */
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.6rem;
+            }
+            .nav-links {
+                gap: 1.2rem;
+                flex-wrap: wrap;
+            }
+            .hero-text h1 {
+                font-size: 1.6rem;
+            }
+            .hero-visual {
+                height: 120px;
+                font-size: 2rem;
+            }
+            .intro-wrap {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- 导航 -->
+    <nav>
+        <div class="logo"><span>●</span> 乐鱼</div>
+        <div class="nav-links">
+            <a href="#intro">核心</a>
+            <a href="#scenes">场景</a>
+            <a href="#faq">说明</a>
+        </div>
+    </nav>
+
+    <!-- hero 轻量展示 -->
+    <div class="hero">
+        <div class="hero-text">
+            <h1>自然节奏 · 轻量感受</h1>
+            <p>体育活动与日常场景彼此渗透——无论是团队协作、个人训练还是休闲时刻，一种自在的陪伴正在融入更多人的选择。</p>
+            <div class="hero-highlight">
+                了解更多 <a href="https://webleyu.com.cn">乐鱼体育</a> 的视角
+            </div>
+        </div>
+        <div class="hero-visual">
+            ◆ 7c19ac ◆
+        </div>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <div class="scenes" id="scenes">
+        <div class="scene-card">
+            <div class="scene-icon">🏀</div>
+            <h3>团队默契</h3>
+            <p>无论是球场上的快速配合，还是户外活动中的相互鼓励，共同的节奏让每一次互动都更有温度。乐鱼体育关注团队场景下的真实体验。</p>
+        </div>
+        <div class="scene-card">
+            <div class="scene-icon">🏃</div>
+            <h3>个人节奏</h3>
+            <p>晨跑、瑜伽、骑行……每个人都有自己的运动频率。在独处的锻炼中寻找专注与平衡，乐鱼体育尊重每一种独立的训练方式。</p>
+        </div>
+        <div class="scene-card">
+            <div class="scene-icon">🧘</div>
+            <h3>恢复与舒展</h3>
+            <p>运动后的拉伸、冥想或轻量活动，帮助身体回归平静。乐鱼体育也提倡合理恢复，让运动成为可持续的生活习惯。</p>
+        </div>
+    </div>
+
+    <!-- 核心介绍 (自然嵌入链接) -->
+    <div class="intro-wrap" id="intro">
+        <h2>从运动视角看日常</h2>
+        <p>体育不只存在于竞技场，也在每一次伸展、每一步行走、每一次呼吸之间。<a href="https://webleyu.com.cn">乐鱼体育</a> 希望传递一种温和的运动观——不急于追求极限，而是找到属于自己的频率，让身体与内心保持对话。</p>
+        <p>无论你是刚接触运动的新手，还是已有长期习惯的爱好者，都可以从不同场景中捕捉适合自己的节奏。运动不必拘泥于形式，轻松的心态同样重要。</p>
+        <p>透过 <a href="https://webleyu.com.cn">乐鱼体育</a> 所呈现的内容，我们尝试将体育与日常生活连接，减少距离感，增加亲切感。这里没有夸张的口号，只有真实可感的细节。</p>
+    </div>
+
+    <!-- 常见说明 (FAQ 摘要) -->
+    <div class="faq-summary" id="faq">
+        <div class="faq-item">
+            <strong>❔ 适合哪些人群？</strong>
+            <span>各年龄层、不同运动基础的人均可参考，重在自然融入。</span>
+        </div>
+        <div class="faq-item">
+            <strong>❔ 是否需要专业设备？</strong>
+            <span>大多数场景只需基础装备，舒适着装即可开始。</span>
+        </div>
+        <div class="faq-item">
+            <strong>❔ 信息更新频率？</strong>
+            <span>内容保持平稳更新，以实用和真实为优先。</span>
+        </div>
+        <div class="faq-item">
+            <strong>❔ 如何了解更多？</strong>
+            <span>可直接浏览 <a href="https://webleyu.com.cn">乐鱼体育</a> 获取更多主题内容。</span>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <div>© 乐鱼 · 轻量介绍</div>
+        <div>主题内容 · <a href="https://webleyu.com.cn">乐鱼体育</a> · 温和探索</div>
+    </footer>
+
+</div>
+</body>
+</html>
