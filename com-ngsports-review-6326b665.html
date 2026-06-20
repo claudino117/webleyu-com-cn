@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+  <title>ng体育 · 知识库与持续关注</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', sans-serif;
+      background: #f7fafc;
+      color: #1a2c3b;
+      line-height: 1.6;
+      padding: 20px 16px 40px;
+      min-height: 100vh;
+    }
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 32px;
+      box-shadow: 0 8px 28px rgba(0, 40, 50, 0.06);
+      overflow: hidden;
+      padding: 32px 24px 44px;
+    }
+
+    /* 顶部标识区 */
+    .top-badge {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .badge-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .badge-icon {
+      width: 40px;
+      height: 40px;
+      background: #0c6f65;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 1;
+    }
+    .badge-text {
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: #1e3b4a;
+    }
+    .badge-text small {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 400;
+      color: #3f697b;
+      margin-top: 2px;
+    }
+    .return-note {
+      background: #e3f0ed;
+      padding: 8px 18px;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      color: #14524a;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+    .return-note span {
+      font-size: 1.1rem;
+    }
+
+    /* hero 简明 */
+    .hero {
+      margin-bottom: 40px;
+      border-bottom: 1px solid #dbe8e6;
+      padding-bottom: 28px;
+    }
+    .hero h1 {
+      font-size: 2.1rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: #0a2c31;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .hero p {
+      font-size: 1.05rem;
+      color: #2b5360;
+      max-width: 680px;
+    }
+
+    /* 网格卡片目录 ———— 知识库入口感 */
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px 20px;
+      margin-bottom: 48px;
+    }
+    .card {
+      background: #f6fbfa;
+      border-radius: 24px;
+      padding: 22px 18px 20px;
+      border: 1px solid #d7e7e4;
+      transition: box-shadow 0.2s, transform 0.1s;
+    }
+    .card:hover {
+      box-shadow: 0 6px 16px rgba(8, 80, 70, 0.08);
+      transform: translateY(-2px);
+    }
+    .card-icon {
+      display: inline-block;
+      background: #ccded9;
+      color: #0a443e;
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      text-align: center;
+      line-height: 38px;
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+    }
+    .card h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #103f43;
+      margin-bottom: 8px;
+    }
+    .card p {
+      font-size: 0.92rem;
+      color: #2a4f57;
+      margin-bottom: 6px;
+    }
+    .card .tag {
+      display: inline-block;
+      background: #d2e7e1;
+      padding: 0 12px;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      color: #13534a;
+      margin-top: 8px;
+      line-height: 1.8;
+    }
+
+    /* 说明区 + 提示区双列 */
+    .info-panel {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      margin-bottom: 44px;
+    }
+    .explain-box {
+      flex: 2;
+      min-width: 260px;
+      background: #eaf3f0;
+      padding: 24px 22px;
+      border-radius: 28px;
+    }
+    .explain-box h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #09433b;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .explain-box p {
+      margin-bottom: 14px;
+      color: #1a404a;
+      font-size: 0.98rem;
+    }
+    .explain-box p:last-child {
+      margin-bottom: 0;
+    }
+    .tip-box {
+      flex: 1.2;
+      min-width: 200px;
+      background: #d4e6e1;
+      padding: 24px 20px;
+      border-radius: 28px;
+    }
+    .tip-box h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #07463d;
+      margin-bottom: 16px;
+    }
+    .tip-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 14px;
+      align-items: flex-start;
+    }
+    .tip-item .num {
+      background: #0d695d;
+      color: white;
+      width: 24px;
+      height: 24px;
+      border-radius: 30px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+    .tip-item p {
+      font-size: 0.92rem;
+      color: #103d3a;
+      margin: 0;
+    }
+
+    /* 相关信息区 — FAQ 摘要 + 链接 */
+    .related-area {
+      background: #f2f9f7;
+      border-radius: 28px;
+      padding: 28px 22px 24px;
+      margin-bottom: 28px;
+      border: 1px solid #cfe0db;
+    }
+    .related-area h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #0a3f3a;
+      margin-bottom: 20px;
+    }
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px 20px;
+    }
+    .faq-item {
+      background: white;
+      border-radius: 20px;
+      padding: 14px 16px;
+      box-shadow: 0 2px 6px rgba(0, 30, 20, 0.03);
+    }
+    .faq-item strong {
+      display: block;
+      font-weight: 600;
+      color: #0e4c47;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+    .faq-item p {
+      font-size: 0.88rem;
+      color: #26555b;
+    }
+    .related-link-note {
+      margin-top: 24px;
+      background: white;
+      border-radius: 60px;
+      padding: 14px 20px;
+      font-size: 0.98rem;
+      display: inline-block;
+      border: 1px solid #bed6cf;
+      color: #15413f;
+    }
+    .related-link-note a {
+      color: #0c6f62;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dotted #6aa89b;
+    }
+    .related-link-note a:hover {
+      border-bottom: 2px solid #0c6f62;
+    }
+
+    /* 脚注 */
+    .footer-note {
+      margin-top: 20px;
+      border-top: 1px solid #dbe5e2;
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 0.85rem;
+      color: #46707a;
+    }
+    .footer-note span {
+      opacity: 0.8;
+    }
+
+    /* 移动端微调 */
+    @media (max-width: 500px) {
+      .page { padding: 20px 14px 30px; }
+      .hero h1 { font-size: 1.6rem; }
+      .badge-logo { flex-wrap: wrap; }
+      .return-note { white-space: normal; font-size: 0.8rem; }
+      .explain-box, .tip-box { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <!-- 顶部：再次访问 + 收藏感 -->
+  <div class="top-badge">
+    <div class="badge-logo">
+      <div class="badge-icon">⛳</div>
+      <div class="badge-text">
+        ng体育 · 知识库
+        <small>持续关注 · 信息索引</small>
+      </div>
+    </div>
+    <div class="return-note">
+      <span>↻</span> 再次回到这里 · 收藏指引
+    </div>
+  </div>
+
+  <!-- hero 简洁欢迎 -->
+  <div class="hero">
+    <h1>ng体育 信息聚合 · 常来常新</h1>
+    <p>无论你是一直关注，还是中途回来翻看，这里都保持着温和的节奏。我们整理了一些关于 ng体育 的背景、提示和常见话题，方便你随时查阅。</p>
+  </div>
+
+  <!-- 卡片目录 —— 知识库入口感 -->
+  <div class="grid-cards">
+    <div class="card">
+      <div class="card-icon">📘</div>
+      <h3>认识 ng体育</h3>
+      <p>围绕体育资讯、赛事动态与内容生态，逐步形成的一个信息节点。适合想了解的读者。</p>
+      <span class="tag">背景</span>
+    </div>
+    <div class="card">
+      <div class="card-icon">📌</div>
+      <h3>内容特点</h3>
+      <p>关注赛事解读、运动文化以及用户讨论，内容风格偏重信息整合与观点分享。</p>
+      <span class="tag">风格</span>
+    </div>
+    <div class="card">
+      <div class="card-icon">🧭</div>
+      <h3>使用场景</h3>
+      <p>赛前浏览、赛后回顾、日常运动兴趣阅读，或作为体育类信息的一个参考入口。</p>
+      <span class="tag">导航</span>
+    </div>
+    <div class="card">
+      <div class="card-icon">💬</div>
+      <h3>社区氛围</h3>
+      <p>讨论区注重交流质量，用户常常分享观点与资讯，保持理性讨论。</p>
+      <span class="tag">生态</span>
+    </div>
+  </div>
+
+  <!-- 说明区 + 提示区 (双栏) -->
+  <div class="info-panel">
+    <div class="explain-box">
+      <h2>📋 说明区 · 再次访问的意义</h2>
+      <p>如果你曾浏览过 ng体育 相关内容，再次回来会发现信息在不断积累。无论是赛事复盘、运动科普还是用户笔记，都按照主题慢慢沉淀。这里不是一个快速消费的页面，而是你可以偶尔回来翻阅的知识角落。</p>
+      <p>收藏这个页面，相当于保存了一个安静的入口。未来当你需要回顾某项运动讨论或查找之前看过的观点时，可以轻松找回线索。</p>
+    </div>
+    <div class="tip-box">
+      <h2>💡 提示区</h2>
+      <div class="tip-item">
+        <span class="num">1</span>
+        <p>建议使用书签保存，方便后面继续阅读。</p>
+      </div>
+      <div class="tip-item">
+        <span class="num">2</span>
+        <p>内容更新不频繁但保持节奏，适合细水长流式关注。</p>
+      </div>
+      <div class="tip-item">
+        <span class="num">3</span>
+        <p>每个栏目都支持直接跳转，无需反复寻找。</p>
+      </div>
+      <div class="tip-item">
+        <span class="num">4</span>
+        <p>移动端同样适配良好，随时可以翻看。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 相关信息区：FAQ 摘要 + 嵌入链接 -->
+  <div class="related-area">
+    <h2>📚 相关信息 · 常见话题摘要</h2>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <strong>ng体育 是什么？</strong>
+        <p>一个以体育内容为核心的资讯站点，涵盖赛事、观点和文化讨论。</p>
+      </div>
+      <div class="faq-item">
+        <strong>信息可靠吗？</strong>
+        <p>内容来源于公开资料与社区讨论，请自行判断，保持独立思考。</p>
+      </div>
+      <div class="faq-item">
+        <strong>如何持续关注？</strong>
+        <p>定期回来看看，或通过收藏夹直接定位到 <a href="https://com-ngsports.com">ng体育</a> 相关页面。</p>
+      </div>
+      <div class="faq-item">
+        <strong>有没有互动渠道？</strong>
+        <p>部分栏目开放评论，欢迎友好交流。</p>
+      </div>
+    </div>
+
+    <!-- 自然嵌入链接（句子内） -->
+    <div class="related-link-note">
+      🔗 如果你希望直接浏览主站内容，可以前往 <a href="https://com-ngsports.com">ng体育</a> 查看更多信息。这里依然作为知识库入口保持更新。
+    </div>
+  </div>
+
+  <!-- 底部 -->
+  <div class="footer-note">
+    <span>© 知识库页面 · 仅供信息参考</span>
+    <span>内容方向：再次访问 · 收藏 · 持续关注</span>
+  </div>
+</div>
+</body>
+</html>
