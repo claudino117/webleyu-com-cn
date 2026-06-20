@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>天天盈球 · 轻量导航介绍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(145deg, #fdf1e8 0%, #fde9d8 35%, #f7dcc5 70%, #f5d6bd 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 2rem 1.2rem 3rem;
+      line-height: 1.6;
+      color: #3e2c1c;
+    }
+
+    .page-wrapper {
+      max-width: 1100px;
+      width: 100%;
+      background: rgba(255, 248, 240, 0.65);
+      backdrop-filter: blur(3px);
+      border-radius: 56px 56px 42px 42px;
+      padding: 2.2rem 2rem 3rem;
+      box-shadow: 0 12px 28px rgba(180, 120, 70, 0.12), 0 4px 12px rgba(140, 90, 50, 0.08);
+      transition: all 0.2s ease;
+    }
+
+    /* 顶部导航 */
+    .nav-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 3rem;
+      padding: 0.2rem 0 0.8rem;
+      border-bottom: 2px solid rgba(200, 155, 110, 0.25);
+    }
+
+    .nav-brand {
+      font-weight: 600;
+      font-size: 1.4rem;
+      letter-spacing: 1px;
+      color: #6f4e2e;
+      background: rgba(255, 237, 220, 0.6);
+      padding: 0.2rem 1rem 0.2rem 0.8rem;
+      border-radius: 40px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-brand span {
+      background: #d9b382;
+      color: #fef7ef;
+      font-size: 0.8rem;
+      border-radius: 30px;
+      padding: 0.1rem 0.7rem;
+      font-weight: 400;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem 2rem;
+      list-style: none;
+      margin: 0.5rem 0 0;
+      padding: 0;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #4f3a27;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 0.2rem 0.1rem;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .nav-links li a:hover {
+      border-bottom-color: #b8855a;
+      color: #3b291b;
+    }
+
+    /* hero 区块 */
+    .hero-section {
+      text-align: center;
+      margin: 1rem 0 2.8rem;
+      padding: 0.6rem 0;
+    }
+
+    .hero-section h1 {
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: #4d3420;
+      background: linear-gradient(to right, #6e4d2c, #966b40);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-section p {
+      font-size: 1.15rem;
+      max-width: 700px;
+      margin: 0.8rem auto 1rem;
+      color: #4f3924;
+      background: rgba(255, 247, 235, 0.6);
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      display: inline-block;
+      backdrop-filter: blur(2px);
+    }
+
+    /* 核心介绍卡片 */
+    .intro-card {
+      background: rgba(255, 250, 243, 0.75);
+      backdrop-filter: blur(4px);
+      padding: 2rem 2.2rem;
+      border-radius: 40px;
+      margin: 2rem 0 3rem;
+      box-shadow: 0 8px 20px rgba(170, 120, 70, 0.08);
+      border: 1px solid rgba(235, 205, 175, 0.3);
+      transition: box-shadow 0.25s;
+    }
+
+    .intro-card:hover {
+      box-shadow: 0 12px 28px rgba(160, 110, 60, 0.12);
+    }
+
+    .intro-card h2 {
+      font-size: 1.6rem;
+      font-weight: 500;
+      margin-bottom: 1.2rem;
+      color: #5d3f26;
+      border-left: 8px solid #c39567;
+      padding-left: 1rem;
+    }
+
+    .intro-card p {
+      margin: 1rem 0 0.5rem;
+      font-size: 1.02rem;
+    }
+
+    .intro-card p a {
+      color: #6f4f30;
+      text-decoration: none;
+      font-weight: 500;
+      background: #f8e5d2;
+      padding: 0.1rem 0.6rem;
+      border-radius: 30px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .intro-card p a:hover {
+      background: #dbb58c;
+      color: #2c1f14;
+    }
+
+    .intro-highlight {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin-top: 1.8rem;
+      padding-top: 1rem;
+      border-top: 1px dashed #dbbd9e;
+    }
+
+    .intro-item {
+      flex: 1 1 180px;
+      background: rgba(240, 225, 207, 0.4);
+      padding: 1rem 1.2rem;
+      border-radius: 30px;
+      text-align: center;
+    }
+
+    .intro-item strong {
+      display: block;
+      font-weight: 600;
+      color: #573d28;
+      margin-bottom: 0.3rem;
+    }
+
+    /* 三个场景模块 */
+    .scenes-title {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin: 2.5rem 0 1.2rem;
+      color: #4c3620;
+      text-align: center;
+    }
+
+    .scenes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.8rem;
+      margin: 0 0 2.5rem;
+    }
+
+    .scene-card {
+      background: rgba(255, 248, 236, 0.7);
+      backdrop-filter: blur(4px);
+      padding: 1.8rem 1.2rem 1.6rem;
+      border-radius: 36px;
+      transition: transform 0.2s, background 0.2s;
+      border: 1px solid rgba(210, 175, 140, 0.2);
+      box-shadow: 0 4px 12px rgba(150, 100, 55, 0.06);
+    }
+
+    .scene-card:hover {
+      transform: translateY(-4px);
+      background: rgba(255, 245, 230, 0.8);
+      border-color: #dbb58b;
+    }
+
+    .scene-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.8rem;
+      color: #5b3f29;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .scene-card h3 span {
+      background: #e6c7ab;
+      border-radius: 40px;
+      padding: 0 0.8rem;
+      font-weight: 400;
+      font-size: 0.9rem;
+      color: #3f2b1b;
+    }
+
+    .scene-card p {
+      font-size: 0.98rem;
+      color: #4a3726;
+      margin-top: 0.5rem;
+    }
+
+    /* 常见说明区域 (FAQ摘要) */
+    .faq-section {
+      margin: 3rem 0 1.8rem;
+      background: rgba(245, 233, 218, 0.4);
+      border-radius: 40px;
+      padding: 1.8rem 2rem 2.2rem;
+      backdrop-filter: blur(2px);
+    }
+
+    .faq-section h2 {
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: #4a3421;
+      margin-bottom: 1.4rem;
+    }
+
+    .faq-item {
+      background: rgba(255, 247, 235, 0.55);
+      border-radius: 30px;
+      padding: 1rem 1.6rem;
+      margin-bottom: 0.8rem;
+      border: 1px solid #edd9c0;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 600;
+      color: #563b24;
+      margin-bottom: 0.25rem;
+    }
+
+    .faq-item p {
+      font-size: 0.95rem;
+      color: #3d2c1b;
+    }
+
+    .faq-item a {
+      color: #6f4d2b;
+      text-decoration: underline wavy rgba(180, 130, 80, 0.3);
+      text-underline-offset: 4px;
+      font-weight: 450;
+      transition: color 0.2s;
+    }
+
+    .faq-item a:hover {
+      color: #3f2a18;
+      text-decoration-color: #b07b4b;
+    }
+
+    /* 底部温和提示 */
+    .footer-note {
+      margin-top: 3rem;
+      padding-top: 1.8rem;
+      border-top: 1px solid rgba(190, 150, 110, 0.2);
+      text-align: center;
+      font-size: 0.9rem;
+      color: #5d4732;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8rem 2rem;
+    }
+
+    .footer-note a {
+      color: #5a402b;
+      text-decoration: none;
+      font-weight: 450;
+      background: rgba(230, 205, 178, 0.3);
+      padding: 0.1rem 0.8rem;
+      border-radius: 40px;
+      transition: background 0.2s;
+    }
+
+    .footer-note a:hover {
+      background: #dbb58b;
+      color: #2d1f12;
+    }
+
+    /* 响应式调整 */
+    @media (max-width: 700px) {
+      body {
+        padding: 1rem 0.8rem 2rem;
+      }
+      .page-wrapper {
+        padding: 1.6rem 1.2rem 2rem;
+        border-radius: 36px;
+      }
+      .hero-section h1 {
+        font-size: 2rem;
+      }
+      .nav-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+      .nav-links {
+        gap: 1rem 1.5rem;
+      }
+      .intro-card {
+        padding: 1.6rem 1.2rem;
+      }
+      .faq-section {
+        padding: 1.2rem 1rem;
+      }
+    }
+
+    @media (max-width: 450px) {
+      .scenes-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-section h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- 顶部导航 -->
+  <nav class="nav-bar">
+    <div class="nav-brand">
+      ⚡ 天天盈球 <span>导航</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#intro">介绍</a></li>
+      <li><a href="#scenes">场景</a></li>
+      <li><a href="#faq">说明</a></li>
+      <li><a href="https://to-ttyingqiu.com">天天盈球</a></li>
+    </ul>
+  </nav>
+
+  <!-- hero 区域 -->
+  <section class="hero-section">
+    <h1>稳定入口 · 日日陪伴</h1>
+    <p>信息顺手，节奏轻盈，始终有一个安静的起点</p>
+  </section>
+
+  <!-- 核心介绍 -->
+  <section class="intro-card" id="intro">
+    <h2>关于这个页面</h2>
+    <p>
+      这里是一个轻量的入口介绍页，围绕 <a href="https://to-ttyingqiu.com">天天盈球</a> 
+      ，用温和的视觉和简洁的框架，帮助大家更快理解它提供的场景与日常用途。
+      不用复杂的跳转，不必记忆多个地址，只需一个熟悉的名字，就能回到你需要的界面。
+    </p>
+    <div class="intro-highlight">
+      <div class="intro-item">
+        <strong>🔹 稳定入口</strong>
+        清晰直达，减少寻找负担
+      </div>
+      <div class="intro-item">
+        <strong>🔸 场景卡片</strong>
+        三个常见场景，一目了然
+      </div>
+      <div class="intro-item">
+        <strong>🔹 轻松参考</strong>
+        常见说明摘要，快速了解
+      </div>
+    </div>
+  </section>
+
+  <!-- 三个场景模块 -->
+  <h2 class="scenes-title" id="scenes">日常使用场景</h2>
+  <div class="scenes-grid">
+    <div class="scene-card">
+      <h3>📱 快速查阅 <span>场景一</span></h3>
+      <p>打开 <a href="https://to-ttyingqiu.com" style="text-decoration:underline; color:#6f4d2b;">天天盈球</a> 随时浏览最新内容，不必收藏多个页面，一个地址即可衔接日常节奏。</p>
+    </div>
+    <div class="scene-card">
+      <h3>🔄 信息聚合 <span>场景二</span></h3>
+      <p>需要回顾或对比信息时，通过同一入口进入，页面结构清晰，适合专注阅读与简单操作。</p>
+    </div>
+    <div class="scene-card">
+      <h3>🧭 轻松切换 <span>场景三</span></h3>
+      <p>无论在电脑还是手机上，使用同一链接，界面自适应，保持一致的观感和导航逻辑。</p>
+    </div>
+  </div>
+
+  <!-- 常见说明摘要 FAQ -->
+  <section class="faq-section" id="faq">
+    <h2>常见说明 · 摘要</h2>
+    <div class="faq-item">
+      <strong>❓ 这个页面和天天盈球是什么关系？</strong>
+      <p>这是一个围绕 <a href="https://to-ttyingqiu.com">天天盈球</a> 的导航介绍页，提供稳定的访问入口和场景参考，不涉及具体功能或数据展示。</p>
+    </div>
+    <div class="faq-item">
+      <strong>❓ 访问时需要注意什么？</strong>
+      <p>无需额外注册或下载，直接通过链接进入即可。页面内容仅供示意参考，具体以实际站点为准。</p>
+    </div>
+    <div class="faq-item">
+      <strong>❓ 能否把链接分享给朋友？</strong>
+      <p>当然可以。直接分享 <a href="https://to-ttyingqiu.com">天天盈球</a> 的链接，对方就能看到最新内容。</p>
+    </div>
+    <div style="margin-top:1.4rem; background: #f6e4d2; border-radius: 40px; padding: 0.8rem 1.2rem; font-size:0.95rem; text-align:center;">
+      💡 若需要更具体的帮助，可自行浏览站内指引或相关说明。
+    </div>
+  </section>
+
+  <!-- 底部温和提示 -->
+  <div class="footer-note">
+    <span>轻松导航 · 稳定入口</span>
+    <span><a href="https://to-ttyingqiu.com">天天盈球</a></span>
+    <span>页面内容仅供示意</span>
+  </div>
+
+</div>
+</body>
+</html>
