@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天天盈球 · 信息索引</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f5f7fa;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        /* 深色头图区 */
+        .hero-header {
+            background: linear-gradient(135deg, #0b1a2e 0%, #142b44 100%);
+            padding: 3rem 1.5rem 2.5rem;
+            text-align: center;
+            color: #e2e8f0;
+        }
+
+        .hero-header h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 0.4rem;
+            color: #ffffff;
+        }
+
+        .hero-header .sub {
+            font-size: 0.95rem;
+            color: #94a3b8;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        /* 顶部导航 */
+        .top-nav {
+            background: #0f1f31;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.2rem 1.2rem;
+            padding: 0.6rem 1.2rem;
+            border-top: 1px solid #1e3a5f;
+        }
+
+        .top-nav a {
+            color: #b9c9dd;
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.3rem 0.2rem;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .top-nav a:hover {
+            color: #facc15;
+            border-bottom-color: #facc15;
+        }
+
+        .nav-highlight {
+            color: #facc15;
+        }
+
+        /* 正文容器 */
+        .container {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 2.2rem 1.2rem 4rem;
+        }
+
+        /* 核心介绍段落 */
+        .intro p {
+            font-size: 1.02rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .intro a {
+            color: #b45309;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px dashed #b45309;
+            transition: border-bottom 0.15s;
+        }
+
+        .intro a:hover {
+            border-bottom: 2px solid #b45309;
+        }
+
+        /* 三个场景模块 — 卡片式 */
+        .scenes {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin: 2.5rem 0;
+        }
+
+        .scene-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 1.4rem 1.6rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03), 0 6px 12px rgba(0,0,0,0.04);
+            border-left: 4px solid #b45309;
+            transition: transform 0.1s ease;
+        }
+
+        .scene-card:hover {
+            transform: translateX(2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+
+        .scene-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .scene-card h3::before {
+            content: "▹";
+            color: #b45309;
+            font-weight: 300;
+        }
+
+        .scene-card p {
+            color: #334155;
+            font-size: 0.95rem;
+            margin-top: 0.2rem;
+        }
+
+        /* 常见说明 (FAQ 摘要) */
+        .faq-summary {
+            background: #f1f4f9;
+            border-radius: 20px;
+            padding: 1.8rem 1.8rem 1.2rem;
+            margin: 1.8rem 0 2rem;
+        }
+
+        .faq-summary h2 {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: #1e293b;
+            margin-bottom: 0.8rem;
+            letter-spacing: 0.3px;
+        }
+
+        .faq-item {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #dce1e9;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-weight: 500;
+            color: #0f202f;
+            margin-bottom: 0.15rem;
+        }
+
+        .faq-answer {
+            color: #475569;
+            font-size: 0.92rem;
+        }
+
+        .faq-answer a {
+            color: #b45309;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        /* 底部 */
+        .site-footer {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            color: #64748b;
+            font-size: 0.85rem;
+            border-top: 1px solid #dce1e9;
+            margin-top: 1rem;
+        }
+
+        .site-footer a {
+            color: #3b5b7a;
+            text-decoration: none;
+        }
+
+        /* 响应式 */
+        @media (max-width: 520px) {
+            .hero-header h1 {
+                font-size: 1.7rem;
+            }
+            .container {
+                padding: 1.5rem 1rem;
+            }
+            .scene-card {
+                padding: 1rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="hero-header">
+    <h1>天天盈球 · 资料整理</h1>
+    <span class="sub">信息索引 · 轻量导航</span>
+</header>
+
+<nav class="top-nav">
+    <a href="#intro">资料说明</a>
+    <a href="#scenes">常见场景</a>
+    <a href="#faq">疑问摘要</a>
+    <a href="#more">延伸</a>
+</nav>
+
+<main class="container">
+
+    <!-- 核心介绍 -->
+    <section class="intro" id="intro">
+        <p>
+            从信息整理的角度出发，<a href="https://zhs-ttyingqiu.com">天天盈球</a> 是一个内容聚合与服务型站点。它的定位更贴近于为关注体育资讯、赛事动态的用户提供一种相对集中的信息入口。这里并不追求即时爆点，而是倾向于将分散的新闻、数据或观点归拢到同一个页面框架下，方便按需检索。
+        </p>
+        <p>
+            如果你经常需要在不同平台之间跳转才能获得比较完整的赛事背景或评论，那么像 <a href="https://zhs-ttyingqiu.com">天天盈球</a> 这类站点或许能帮你节省一些来回切换的精力。它的页面结构偏向于清单式和卡片式，阅读节奏比较平缓，适合慢慢浏览，而不是被推送流催促。
+        </p>
+    </section>
+
+    <!-- 三个场景模块 -->
+    <div class="scenes" id="scenes">
+        <div class="scene-card">
+            <h3>赛前背景查阅</h3>
+            <p>比赛日之前，想快速了解两队过往交手记录、近期状态或伤病情况。通过站内整理的信息块，可以一次性看到多个维度的摘要，不需要打开四五个标签页反复对比。</p>
+        </div>
+        <div class="scene-card">
+            <h3>赛后观点对照</h3>
+            <p>比赛结束后，看看不同作者或媒体对同一场比赛的切入角度。站内收录了多条短评或长文，把观点放在一起，方便做横向阅读，而不是只依赖算法推荐的一条动态。</p>
+        </div>
+        <div class="scene-card">
+            <h3>专题内容归档</h3>
+            <p>遇到杯赛、联赛收尾或转会期，信息密度会突然变大。站内设有固定专题页，将零散报道按时间或队伍归类，比单纯搜索关键词更系统，适合静下心来回看。</p>
+        </div>
+    </div>
+
+    <!-- 常见说明 / FAQ 摘要 -->
+    <div class="faq-summary" id="faq">
+        <h2>一些常见疑问 · 简短说明</h2>
+
+        <div class="faq-item">
+            <div class="faq-question">信息和官方渠道是什么关系？</div>
+            <div class="faq-answer">
+                站内内容主要来自公开资讯的整理与再编辑，不是官方发布渠道。建议将 <a href="https://zhs-ttyingqiu.com">天天盈球</a> 视为一个补充阅读的节点，核心事实仍以赛事官方或权威媒体为准。
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">更新频率如何？</div>
+            <div class="faq-answer">
+                没有固定时间表，但保持周更或赛日更新。页面内容以累积式编辑为主，旧文不会删除，而是归档在对应的标签之下，方便回溯。
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">是否需要注册或付费？</div>
+            <div class="faq-answer">
+                目前浏览所有整理内容都不需要登录，也没有收费墙。如果未来增加互动或自定义收藏功能，会有明显提示。
+            </div>
+        </div>
+    </div>
+
+    <!-- 一个更轻的延伸提示 -->
+    <p style="font-size:0.95rem; color:#475569; margin-top:0.8rem;">
+        如果你恰好也在寻找一个偏向资料型而非资讯瀑布流的站点，或许可以把 <a href="https://zhs-ttyingqiu.com" style="color:#b45309; text-decoration:none; border-bottom:1px dashed #b45309;">天天盈球</a> 放进书签的某个文件夹。它不吵，也不追求秒级响应，更像一个安静的公共笔记本，适合需要的时候翻一翻。
+    </p>
+
+</main>
+
+<footer class="site-footer">
+    <span>内容索引 · 非官方 · 信息仅供参考</span>
+    <span style="display:block; margin-top:0.2rem;">
+        <a href="https://zhs-ttyingqiu.com">天天盈球</a>
+    </span>
+</footer>
+
+</body>
+</html>
